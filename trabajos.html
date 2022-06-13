@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>GARCIA DENTAL</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+      <link href="style1.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+
+<body>
+<header>
+<div class="wrapper hover_collapse">
+  <div class="top_navbar">
+    <div class="logo">GARCIA DENTAL</div>
+    <div class="menu">
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="logout">
+        <a href="logout.php">
+        <i class="fas fa-door-open"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar close">
+    <ul class="nav-links">
+      <li>
+        <div class="iocn-link">
+          <a href="trabajos.html">
+            <i class="fas fa-folder-open"></i>
+            <span class="link_name">Trabajos</span>
+          </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="trabajos.html">Trabajos</a></li>
+        </ul>
+      </div>
+      </li>
+        <li>
+        <div class="iocn-link">
+          <a href="inventario.html">
+          <i class="fas fa-shopping-cart"></i>
+            <span class="link_name">Inventario</span>
+          </a>
+          <ul class="sub-menu blank">
+          <li><a class="link_name" href="inventario.html">Inventario</a></li>
+        </ul>
+        </div>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="buscar.php">
+            <i class="fas fa-search"></i>
+            <span class="link_name">Buscar</span>
+          </a>
+         <ul class="sub-menu blank">
+          <li><a class="link_name" href="buscar.php">Buscar</a></li>
+        </ul>
+        </div>
+      </li>
+</ul>
+  </div>
+</div>
+</header>
+<hr class="mt-5">
+  <div class="container mt-5 mr-5">
+    <h1>TRABAJOS</h1>
+    <table class="table table-striped mt-5 mr-5">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Clinica</th>
+          <th>Dentista</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Trabajo</th>
+          <th>Cantidad</th>
+          <th>Color</th>
+          <th>Piezas</th>
+          <th>Estado</th>
+          <th>Precio</th>
+          <th>Edición</th>
+        </tr>
+      </thead>
+      <tbody id="datos">
+      </tbody>
+    </table>
+    <button type="button" id="btnAgregar" class="btn btn-primary">Agregar</button>
+  </div>
+
+  <!-- Modal(Agregar, modificar y borrar) -->
+  <div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Trabajos</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="Codigo" name="Codigo">
+
+          <div class="row">
+            <div class="col">
+            <label>Clinica:</label>
+            <select class="form-control" id="CodigoClinica">
+            </select>
+            </div>
+             <div class="col">
+            <label>Dentista:</label>
+            <select class="form-control" id="CodigoDentista">
+            </select>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col">
+              <label>Nombre:</label>
+              <input type="text" id="Nombre" class="form-control" placeholder="">
+            </div>
+            <div class="col">
+              <label>Apellidos:</label>
+              <input type="text" id="Apellidos" class="form-control" placeholder="">
+            </div>
+            <div class="col">
+            <label>Trabajo:</label>
+            <select class="form-control" id="CodigoTrabajo">
+            </select>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col">
+              <label>Cantidad:</label>
+              <input type="number" id="Cantidad" class="form-control" placeholder="">
+            </div>
+            <div class="col">
+              <label>Color:</label>
+              <input type="text" id="Color" class="form-control" placeholder="">
+            </div>
+            <div class="col">
+            <label>Piezas:</label>
+              <input type="text" id="Piezas" class="form-control" placeholder="">
+            </div>
+          </div>
+          <div class="row">
+              <div class="col">
+              <label>Estado:</label>
+              <select class="form-control" id="Estado">
+                <option value="PR">PROCESO</option>
+                <option value="T">TERMINADO</option>
+                <option value="F">FACTURADO</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnConfirmarAgregar" class="btn btn-success">Agregar</button>
+          <button type="button" id="btnModificar" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+          <button type="button" id="btnBorrar" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ModalConfirmarCancelar -->
+  <div class="modal fade" id="ModalConfirmarBorrar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="max-width: 600px" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Realmente quiere borrarlo?</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnConfirmarBorrado" class="btn btn-success">Confirmar</button>
+          <button type="button" data-dismiss="modal" class="btn btn-danger">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      
+
+
+      var trabajo;
+      MostrarProductos();
+      CargarClinicas();
+      CargarDentistas();
+      CargarTrabajos();
+
+      //Boton que muestra el diálogo de agregar
+      $('#btnAgregar').click(function () {
+        LimpiarFormulario();
+        $('#btnConfirmarAgregar').prop("disabled", false);
+        $('#btnConfirmarAgregar').show();
+        $('#btnModificar').hide();
+        $('#btnBorrar').hide();
+        $("#ModalEditar").modal();
+      });
+
+      //Botones que permiten agregar, borrar y modificar una fila de la tabla.
+      $('#btnConfirmarAgregar').click(function () {
+        RecolectarDatosFormulario();
+        if (!EntradaFormularioCorrecto())
+          return;
+        $("#ModalEditar").modal('hide');
+        EnviarInformacion("agregar");
+      });
+
+      $('#btnBorrar').click(function () {
+        $("#ModalEditar").modal('hide');
+        $("#ModalConfirmarBorrar").modal();
+      });
+
+      $('#btnConfirmarBorrado').click(function () {
+        $("#ModalConfirmarBorrar").modal('hide');
+        RecolectarDatosFormulario();
+        $("#ModalEditar").modal('hide');
+        EnviarInformacion("borrar");
+      });
+
+      $('#btnModificar').click(function () {
+        RecolectarDatosFormulario();
+        if (!EntradaFormularioCorrecto())
+          return;
+        $("#ModalEditar").modal('hide');
+        EnviarInformacion("modificar");
+      });
+      //******************************************************* 
+
+      function MostrarProductos() {
+        $.ajax({
+          type: 'GET',
+          url: 'trabajo.php?accion=listar',
+          success: function (trabajos) {
+            let filas = '';
+            for (let trabajo of trabajos) {
+              filas += '<tr><td>' + trabajo.codigo + '</td><td>' + trabajo.descripcionclinica + '</td><td>' + trabajo.descripciondentista + '</td><td>'+trabajo.nombre+'</td><td>'+trabajo.apellidos+'</td><td>'+trabajo.descripcionproducto+'</td><td>'+trabajo.cantidad+'</td><td>'+trabajo.color+'</td><td>'+trabajo.piezas+'</td><td>'+trabajo.estado+'</td><td>' +trabajo.total+'</td>';
+              filas += '<td><a class="btn btn-warning botoneditar" role="button" href="#" data-codigo="' + trabajo.codigo + '"><i class="fas fa-edit"></i></a></td></tr>';
+            }
+            $('#datos').html(filas);
+            //Boton que muestra el diálogo de modificar y borrar
+            $('.botoneditar').click(function () {
+              $('#Codigo').val($(this).get(0).dataset.codigo);
+              RecolectarDatosFormulario();
+              RecuperarProducto("recuperar");
+              $('#btnConfirmarAgregar').hide();
+              $('#btnModificar').show();
+              $('#btnBorrar').show();
+              $("#ModalEditar").modal();
+            });
+
+          },
+          error: function () {
+            alert("Hay un error ..");
+          }
+        });
+      }
+
+
+
+
+      //Funciones AJAX para enviar y recuperar datos del servidor
+      //******************************************************* 
+      function EnviarInformacion(accion) {
+        $.ajax({
+          type: 'POST',
+          url: 'trabajo.php?accion=' + accion,
+          data: trabajo,
+          success: function (msg) {
+            MostrarProductos();
+          },
+          error: function () {
+            alert("Hay un error ..");
+          }
+        });
+      }
+
+      function RecuperarProducto(accion) {
+        $.ajax({
+          type: 'POST',
+          url: 'trabajo.php?accion=' + accion,
+          data: trabajo,
+          success: function (datos) {
+            selectItemByValue(document.getElementById('CodigoClinica'), datos[0]['codigoclinica']);
+             selectItemByValue(document.getElementById('CodigoDentista'), datos[0]['codigodentista']);
+            $('#Nombre').val(datos[0]['nombre']);
+            $('#Apellidos').val(datos[0]['apellidos']);
+             selectItemByValue(document.getElementById('CodigoTrabajo'), datos[0]['codigoproducto']);
+            $('#Cantidad').val(datos[0]['cantidad']);
+            $('#Color').val(datos[0]['color']);
+            $('#Piezas').val(datos[0]['piezas']);
+            $('#Estado').val(datos[0]['estado']);
+          },
+          error: function () {
+            alert("Hay un error ..");
+          }
+        });
+      }
+      function CargarClinicas() {
+        $.ajax({
+          type: 'GET',
+          url: 'trabajo.php?accion=listarclinicas',
+          success: function (dentistas) {
+            let filas = '';
+            for (let dentista of dentistas) {
+              filas += '<option value="' + dentista.codigo + '">' + dentista.nom + '</option>';
+            }
+            $('#CodigoClinica').html(filas);
+          },
+          error: function () {
+            alert("Hay un error ..");
+          }
+        });
+      }
+      function CargarDentistas() {
+        $.ajax({
+          type: 'GET',
+          url: 'trabajo.php?accion=listarclinicas',
+          success: function (dentistas) {
+            let filas = '';
+            for (let dentista of dentistas) {
+              filas += '<option value="' + dentista.codigo + '">' + dentista.nombre + '</option>';
+            }
+            $('#CodigoDentista').html(filas);
+          },
+          error: function () {
+            alert("Hay un error ..");
+          }
+        });
+      }
+      function CargarTrabajos() {
+        $.ajax({
+          type: 'GET',
+          url: 'trabajo.php?accion=listarproductos',
+          success: function (productos) {
+            let filas = '';
+            for (let producto of productos) {
+              filas += '<option value="' + producto.codigo + '">' + producto.nombre + '</option>';
+            }
+            $('#CodigoTrabajo').html(filas);
+          },
+          error: function () {
+            alert("Hay un error ..");
+          }
+        });
+      }
+
+      //******************************************************* 
+
+      function RecolectarDatosFormulario() {
+        trabajo = {
+         codigo: $('#Codigo').val(),
+         codigoclinica: $('#CodigoClinica').val(),
+         codigodentista: $('#CodigoDentista').val(),
+         nombre: $('#Nombre').val(),
+         apellidos: $('#Apellidos').val(),
+         codigoproducto: $('#CodigoTrabajo').val(),
+         cantidad: $('#Cantidad').val(),
+         color: $('#Color').val(),
+         piezas: $('#Piezas').val(),
+         estado: $('#Estado').val()
+        };
+      }
+
+      function LimpiarFormulario() {
+        $('#Codigo').val('');
+        $('#Nombre').val('');
+        $('#CodigoClinica').val('');
+        $('#CodigoDentista').val('');
+        $('#Apellidos').val('');
+        $('#CodigoTrabajo').val('');
+        $('#Cantidad').val('');
+        $('#Color').val('');
+        $('#Piezas').val('');
+        $('#Estado').val('');
+        
+      }
+
+      function EntradaFormularioCorrecto() {
+        if (trabajo['nombre'] == '') {
+          alert("No Puede estar vacío el nombre");
+          return false;
+        }
+        return true;
+      }
+
+
+          // otras funciones
+      // Selecciona un determinado elemento de un control HTML 'select'
+      function selectItemByValue(elmnt, value) {
+        for (var i = 0; i < elmnt.options.length; i++) {
+          if (elmnt.options[i].value == value)
+            elmnt.selectedIndex = i;
+        }
+      }
+
+    });    
+  </script>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".hamburger");
+  console.log(sidebarBtn);
+  sidebarBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("close");
+  });
+var hamburger = document.querySelector(".hamburger");
+var wrapper = document.querySelector(".wrapper");
+hamburger.addEventListener("click", () => {
+
+  hamburger.closest(".wrapper").classList.toggle("hover_collapse");
+})
+
+</script>
+
+</body>
+
+</html>

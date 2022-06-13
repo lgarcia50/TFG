@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>GARCIA DENTAL</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+      <link href="style1.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+
+<body>
+<header>
+<div class="wrapper hover_collapse">
+  <div class="top_navbar">
+    <div class="logo">GARCIA DENTAL</div>
+    <div class="menu">
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="logout">
+        <a href="logout.php">
+        <i class="fas fa-door-open"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar close">
+    <ul class="nav-links">
+      <li>
+        <div class="iocn-link">
+          <a href="usuarios.html">
+            <i class="fas fa-user"></i>
+            <span class="link_name">Usuarios</span>
+          </a>
+          <ul class="sub-menu blank">
+          <li><a class="link_name" href="usuarios.html">Usuarios</a></li>
+        </ul>
+        </div>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="clinicas.html">
+            <i class="fas fa-clinic-medical"></i>
+            <span class="link_name">Clinicas</span>
+          </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="clinicas.html">Clinicas</a></li>
+        </ul>
+      </div>
+      </li>
+        <li>
+        <div class="iocn-link">
+          <a href="dentistas.html">
+            <i class="fas fa-user-md"></i>
+            <span class="link_name">Dentistas</span>
+          </a>
+          <ul class="sub-menu blank">
+          <li><a class="link_name" href="dentistas.html">Dentistas</a></li>
+        </ul>
+        </div>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="productos.html">
+            <i class="fas fa-tooth"></i>
+            <span class="link_name">Productos</span>
+          </a>
+         <ul class="sub-menu blank">
+          <li><a class="link_name" href="productos.html">Productos</a></li>
+        </ul>
+        </div>
+      </li>
+            <li>
+        <div class="iocn-link">
+          <a href="categorias.html">
+           <i class="fas fa-list-alt"></i>
+            <span class="link_name">Categorias</span>
+          </a>
+         <ul class="sub-menu blank">
+          <li><a class="link_name" href="categorias.html">Categorias</a></li>
+        </ul>
+        </div>
+      </li>
+</ul>
+  </div>
+</div>
+</header>
+<hr class="mt-5 ">
+  <div class="container mt-5 mr-5">
+    <h1>CLINICAS</h1>
+
+    <table class="table table-striped mt-5">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Telefono</th>
+          <th>Email</th>
+          <th>Direccion</th>
+          <th>Edición</th>
+        </tr>
+      </thead>
+      <tbody id="datos">
+      </tbody>      
+    </table>
+
+    <button type="button" id="btnAgregar" class="btn btn-primary">Agregar</button>
+
+  <div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="Codigo">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Nombre:</label>
+              <input type="text" id="Nombre" class="form-control" placeholder="">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Telefono:</label>
+              <input type="text" id="Telefono" class="form-control" placeholder="">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Email:</label>
+              <input type="text" id="Email" class="form-control" placeholder="">
+            </div>
+          </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Direccion:</label>
+              <input type="text" id="Direccion" class="form-control" placeholder="">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnConfirmarAgregar" class="btn btn-primary">Agregar</button>
+          <button type="button" id="btnModificar" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+          <button type="button" id="btnBorrar" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ModalConfirmarCancelar -->
+  <div class="modal fade" id="ModalConfirmarBorrar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="max-width: 600px" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Realmente quiere borrarlo?</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnConfirmarBorrado" class="btn btn-primary">Confirmar</button>
+          <button type="button" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+      var clinica;
+      MostrarClinicas();
+
+      //Boton que muestra el diálogo de agregar
+      $('#btnAgregar').click(function() {
+        LimpiarFormulario();
+        $('#btnConfirmarAgregar').show();
+        $('#btnModificar').hide();
+        $('#btnBorrar').hide();
+        $("#ModalEditar").modal();
+      });
+
+      $('#btnConfirmarAgregar').click(function() {
+        RecolectarDatosFormulario();
+        if (!EntradaFormularioCorrecto())
+          return;
+        $("#ModalEditar").modal('hide');
+        EnviarInformacion("agregar");
+      });
+
+      $('#btnBorrar').click(function() {
+        $("#ModalEditar").modal('hide');
+        $("#ModalConfirmarBorrar").modal();
+      });
+
+
+      $('#btnConfirmarBorrado').click(function() {
+        $("#ModalConfirmarBorrar").modal('hide');
+        RecolectarDatosFormulario();
+        $("#ModalEditar").modal('hide');
+        EnviarInformacion("borrar");
+      });
+
+      $('#btnModificar').click(function() {
+        RecolectarDatosFormulario();
+        if (!EntradaFormularioCorrecto())
+          return;
+        $("#ModalEditar").modal('hide');
+        EnviarInformacion("modificar");
+      });
+      //******************************************************* 
+
+      function MostrarClinicas() {
+        $.ajax({
+          type: 'GET',
+          url: 'clinicas.php?accion=listar',
+          success: function(clinicas) {
+            let filas = '';
+            for (let clinica of clinicas) {
+              filas += '<tr><td>' + clinica.codigo + '</td><td>' + clinica.nombre + '</td><td>'+clinica.telefono+'</td><td>'+clinica.mail+'</td><td>'+clinica.direccion+'</td>';
+              filas += '<td><a class="btn btn-warning botoneditar" role="button" href="#" data-codigo="' + clinica.codigo + '"><i class="fas fa-edit"></i></a> </td></tr>';
+            }
+            $('#datos').html(filas);
+            //Boton que muestra el diálogo de modificar y borrar
+            $('.botoneditar').click(function() {
+              $('#Codigo').val($(this).get(0).dataset.codigo);
+              RecolectarDatosFormulario();
+              RecuperarClinica("recuperar");
+              $('#btnConfirmarAgregar').hide();
+              $('#btnModificar').show();
+              $('#btnBorrar').show();
+              $("#ModalEditar").modal();
+            });
+
+          },
+          error: function() {
+            alert("Hay un error ..");
+          }
+        });
+      }
+
+      //Funciones AJAX para enviar y recuperar datos del servidor
+      //******************************************************* 
+      function EnviarInformacion(accion) {
+        $.ajax({
+          type: 'POST',
+          url: 'clinicas.php?accion=' + accion,
+          data: clinica,
+          success: function(msg) {
+            MostrarClinicas();
+          },
+          error: function() {
+            alert("Hay un error ..");
+          }
+        });
+      }
+
+      function RecuperarClinica(accion) {
+        $.ajax({
+          type: 'POST',
+          url: 'clinicas.php?accion=' + accion,
+          data: clinica,
+          success: function(datos) {
+            $('#Nombre').val(datos[0]['nombre']);
+            $('#Telefono').val(datos[0]['telefono']);
+            $('#Email').val(datos[0]['mail']);
+            $('#Direccion').val(datos[0]['direccion']);
+          },
+          error: function() {
+            alert("Hay un error ..");
+          }
+        });
+      }
+      //******************************************************* 
+
+      function RecolectarDatosFormulario() {
+        clinica = {
+          codigo: $('#Codigo').val(),
+          nombre: $('#Nombre').val(),
+          telefono: $('#Telefono').val(),
+          mail: $('#Email').val(),
+          direccion: $('#Direccion').val(),
+        };
+      }
+
+      function LimpiarFormulario() {
+        $('#Codigo').val('');
+        $('#Nombre').val('');
+        $('#Telefono').val('');
+        $('#Email').val('');
+        $('#Direccion').val('');
+      }
+
+      function EntradaFormularioCorrecto() {
+        if (clinica['nombre'] == '') {
+          alert("No Puede estar vacía la descripción");
+          return false;
+        }
+        return true;
+      }
+
+    });
+  </script>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".hamburger");
+  console.log(sidebarBtn);
+  sidebarBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("close");
+  });
+var hamburger = document.querySelector(".hamburger");
+var wrapper = document.querySelector(".wrapper");
+hamburger.addEventListener("click", () => {
+
+  hamburger.closest(".wrapper").classList.toggle("hover_collapse");
+})
+
+</script>
+
+</body>
+
+</html>

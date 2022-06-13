@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+    <link href="style1.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+   </head>
+<body>
+<header>
+<div class="wrapper hover_collapse">
+  <div class="top_navbar">
+    <div class="logo">GARCIA DENTAL</div>
+    <div class="menu">
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="logout">
+        <a href="logout.php">
+        <i class="fas fa-door-open"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar close">
+    <ul class="nav-links">
+      <li>
+        <div class="iocn-link">
+          <a href="trabajos.html">
+            <i class="fas fa-folder-open"></i>
+            <span class="link_name">Trabajos</span>
+          </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="trabajos.html">Trabajos</a></li>
+        </ul>
+      </div>
+      </li>
+        <li>
+        <div class="iocn-link">
+          <a href="inventario.html">
+          <i class="fas fa-shopping-cart"></i>
+            <span class="link_name">Inventario</span>
+          </a>
+          <ul class="sub-menu blank">
+          <li><a class="link_name" href="inventario.html">Inventario</a></li>
+        </ul>
+        </div>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="buscar.html">
+            <i class="fas fa-search"></i>
+            <span class="link_name">Buscar</span>
+          </a>
+         <ul class="sub-menu blank">
+          <li><a class="link_name" href="buscar.html">Buscar</a></li>
+        </ul>
+        </div>
+      </li>
+</ul>
+  </div>
+</div>
+</header>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".hamburger");
+  console.log(sidebarBtn);
+  sidebarBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("close");
+  });
+var hamburger = document.querySelector(".hamburger");
+var wrapper = document.querySelector(".wrapper");
+hamburger.addEventListener("click", () => {
+
+  hamburger.closest(".wrapper").classList.toggle("hover_collapse");
+})
+
+</script>
+</body>
+</html>
